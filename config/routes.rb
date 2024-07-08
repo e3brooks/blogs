@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   root "articles#index"
 
   # Map all conventional routes for articles (index, show, new, create, edit, update, destroy)
-  resources :articles
+  resources :articles do
+    # create nested comments resource, shows hierarchical relationship
+    resources :comments
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
