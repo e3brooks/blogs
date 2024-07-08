@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
+    # validations are checked before saving
     if @article.save
       redirect_to @article
     else
