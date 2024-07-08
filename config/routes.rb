@@ -4,11 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route, maps to ArticlesController
   root "articles#index"
 
-  # GET /articles requests map to index action of ArticalsController
-  get "/articles", to: "articles#index"
-
-  # title and body of single article
-  get "/articles/:id", to: "articles#show"
+  # Map all conventional routes for articles (index, show, new, create, edit, update, destroy)
+  resources :articles
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
