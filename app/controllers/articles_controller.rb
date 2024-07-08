@@ -3,4 +3,10 @@ class ArticlesController < ApplicationController
     # fetch all articles from db
     @articles = Article.all
   end
+
+  def show
+    # access correct article
+    @article = Article.find(params[:id])
+  end
+
 end
