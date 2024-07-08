@@ -25,6 +25,22 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # fetches article from db and stores in @article for form use
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  # re-fetches article from db and attempt to update with submitted form data
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private 
     def article_params
       # specify values allowed in param hash
